@@ -3,8 +3,7 @@ const mongoose = require('mongoose')
         mongoose.connect('mongodb+srv://Ataraxia:ataraxia@ataraxia.usy4w.mongodb.net/Ataraxia?retryWrites=true&w=majority', {
                 useNewUrlParser: true,
                 useUnifiedTopology: true
-            },
-            (error) => {
+            },(error) => {
 
                 if (error) {
                     console.log('Error :', error)
