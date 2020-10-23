@@ -9,6 +9,9 @@ conectBD()
 
 require('./routers/user')(app)
 require('./routers/record')(app)
+require('./routers/appointment')(app)
+require('./routers/payment')(app)
+
 
 
 
