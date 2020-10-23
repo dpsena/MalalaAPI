@@ -1,6 +1,6 @@
 const payment = require('../models/payment');
 const PaymentModel = require('../models/payment');
-const user = require('../models/user');
+
 
 exports.create = (req, res) =>{
 
@@ -16,7 +16,7 @@ exports.create = (req, res) =>{
         status: req.body.status
     })
 
-    user.save()
+    payment.save()
     .then((dataPayment) =>{
         res.send(dataPayment)
     }).catch((error) =>{
