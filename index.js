@@ -12,6 +12,7 @@ require('./routers/record')(app)
 require('./routers/appointment')(app)
 require('./routers/payment')(app)
 require('./routers/ataraxia')(app)
+require('./routers/billing')(app)
 
 
 
