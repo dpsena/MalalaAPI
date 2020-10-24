@@ -8,12 +8,12 @@ exports.create = (req, res) => {
         })
     }
     const record = new RecordModel({
-        date: req.body.date,
-        hour: req.body.hour,
+        dateAndHour: req.body.dateAndHour,
         pathology: req.body.pathology,
         observations: req.body.observations,
         recommendations: req.body.recommendations,
         printer: req.body.printer,
+        user: req.body.user
 
     })
     record.save()
@@ -34,13 +34,14 @@ exports.update = (req, res) => {
         })
     }
     const record = {
-        date: req.body.date,
-        recommendations: req.body.recommendations,
+        dateAndHour: req.body.dateAndHour,
+        pathology: req.body.pathology,
         observations: req.body.observations,
+        recommendations: req.body.recommendations,
         printer: req.body.printer,
-
+        user: req.body.user
     }
-    RecordModel.findByIdAndUpdate(req.params.id, record)
+    RecordModel.findByIdAndUpdate(req.params.id, record, {new: true})
         .then((recordUpdate) => {
             res.send(recordUpdate)
         })
