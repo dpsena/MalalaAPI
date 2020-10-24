@@ -7,7 +7,8 @@ exports.create = (req, res) => {
             message: 'los datos  de ataraxia son obligatorios.'
         })
     }
-    const ataraxia = new UserModel({
+
+    const ataraxia = new AtaraxiaModel({
         nit: req.body.nit,
         tradeName: req.body.tradeName,
         address: req.body.address,
