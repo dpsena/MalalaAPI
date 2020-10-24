@@ -12,8 +12,11 @@ exports.create = (req, res) =>{
 
     const payment = new PaymentModel({
         date: req.body.date,
-        time: req.body.time,
-        status: req.body.status
+        serviceName: req.body.serviceName,
+        status: req.body.status,
+        paymentMethod: req.body.paymentMethod,
+        totalPayment: req.body.totalPayment,
+        user: req.body.user
     })
 
     payment.save()
@@ -35,11 +38,14 @@ exports.update = (req, res) =>{
 
     const payment =({
         date: req.body.date,
-        time: req.body.time,
-        status: req.body.status
+        serviceName: req.body.serviceName,
+        status: req.body.status,
+        paymentMethod: req.body.paymentMethod,
+        totalPayment: req.body.totalPayment,
+        user: req.body.user
     })
 
-    PaymentModel.findByIdAndUpdate(req.params.id , payment)
+    PaymentModel.findByIdAndUpdate(req.params.id , payment, {new: true})
     .then((paymentUpdate) =>{
         res.send(paymentUpdate)
     })
