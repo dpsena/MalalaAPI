@@ -1,5 +1,8 @@
 const record = require('../models/record')
 const RecordModel = require('../models/record')
+
+            /**MÉTODO PARA AGREGAR UN HISTORIAL */
+
 exports.create = (req, res) => {
 
     if (Object.entries(req.body).length == 0) {
@@ -27,6 +30,8 @@ exports.create = (req, res) => {
         })
 }
 
+            /**MÉTODO PARA MODIFICAR UN HISTORIAL */
+
 exports.update = (req, res) => {
     if (Object.entries(req.body).length == 0) {
         return res.status(400).send({
@@ -51,3 +56,36 @@ exports.update = (req, res) => {
             })
         })
 }
+
+            /**MÉTODO PARA LISTAR TODOS LOS HISTORIALES */
+
+exports.getAll = (req, res) => {
+    RecordModel.find()
+    .populate('user')
+    .exec()
+    .then((records) => {
+        res.send(records)
+    })
+    .catch((error) => {
+        res.status(500).send({
+            message: error.message
+        })
+    })
+}
+
+            /**MÉTODO PARA LISTAR TODOS LOS HISTORIALES */
+
+exports.getOne = (req, res) => {
+    RecordModel.findById(req.params.id)
+    .populate('user')
+    .exec()
+    .then((record) => {
+        res.send(record)
+    })
+    .catch((error) => {
+        res.status(500).send({
+            message: error.message
+        })
+    })
+}
+
