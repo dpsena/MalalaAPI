@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
                 if (error) {
                     console.log('Error :', error)
                 } else {
-                    console.log('se esta conecto a la base de datos ')
+                    console.log('se conecto a la Base de Datos')
 
                 }
 

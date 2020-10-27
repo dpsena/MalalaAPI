@@ -14,10 +14,9 @@ exports.create = (req, res) => {
     }
     const appointment = new appointmentModel({
         date: req.body.date,
-        time: req.body.time,
         description: req.body.description,
-        professional: req.body.professional,
-        patient: req.body.patient,
+        status: req.body.status,
+        user: req.body.user
         
        
     })
@@ -46,10 +45,9 @@ exports.update = (req,res) =>{
  
     const appointment = {
         date: req.body.date,
-        time: req.body.time,
         description: req.body.description,
-        professional: req.body.professional,
-        patient: req.body.patient,
+        status: req.body.status,
+        user: req.body.user
     }
 
     appointmentModel.findByIdAndUpdate(req.params.id, appointment)
@@ -65,4 +63,61 @@ exports.update = (req,res) =>{
         }
     )
 
+}
+
+/**
+ * Metodo para Listar Todas Citas
+ * @param {*} req => Todo lo que enviamos desde el body
+ * @param {*} res => La respuesta que se devolvera 
+ */
+exports.getAll = (req, res) =>{
+    appointmentModel.find()
+    .populate('Appointment')
+    .exec ()  
+    .then( (appointments) => res.send (appointments) )
+    .catch(
+        (error) => {
+            res.status(500).send ({
+                message: error.message
+            })
+
+        }
+    )
+}
+
+/**
+ * Metodo para Listar una Cita
+ * @param {*} req => Todo lo que enviamos desde el body
+ * @param {*} res => La respuesta que se devolvera 
+ */
+exports.getOne = (req, res) =>{
+    appointmentModel.findById(req.params.id)
+    .populate ('Appointment')
+    .exec ()
+    .then ( (appointments) =>{ res.send (appointments )})
+    .catch(
+        (error) =>{
+            res.status(500).send ({
+                message: error.message
+            })
+        }
+    
+    )
+}
+/**
+ * Metodo para Eliminar una Cita
+ * @param {*} req => Todo lo que enviamos desde el body
+ * @param {*} res => La respuesta que se devolvera 
+ */
+exports.deleteOne = (req, res) =>{
+    appointmentModel.findByIdAndRemove(req.params.id)
+    .then ( (appointments) =>{ res.send (appointments )})
+    .catch(
+        (error) =>{
+            res.status(500).send ({
+                message: error.message
+            })
+        }
+    
+    )
 }
