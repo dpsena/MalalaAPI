@@ -3,10 +3,10 @@ const mongoose= require ('mongoose')
 const appointmentSchema= new mongoose.Schema({
 
     date:{type:String,required:true},
-    time:{type:String, required:true},
     description:{type:String, required:true},
-    professional:{type:String, required:true},
-    patient:{type:String, required:true}
+    status:{ type: Boolean, require:true},
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+   
 
     
     })
