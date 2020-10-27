@@ -56,3 +56,43 @@ exports.update = (req, res) =>{
     })
 
 }
+
+exports.getAll = (req, res) =>{
+    PaymentModel.find()
+        .populate('user')
+        .exec()
+        .then((payments) =>{
+            res.send(payments)
+        })
+        .catch((error) =>{
+            res.status(500).send({
+                message: error.message
+            })
+        })
+}
+
+exports.getOne = (req, res) =>{
+    PaymentModel.findById(req.params.id)
+    .populate('user')
+    .exec()
+    .then((payment) =>{
+        res.send(payment)
+    })
+    .catch((error) =>{
+        res.status(500).send({
+            message: error.message
+        })
+    })
+}
+
+exports.deleteOne = (req, res) =>{
+    PaymentModel.findByIdAndRemove(req.params.id)
+    .then((payment) =>{
+        res.send(payment)
+    })
+    .catch((error) =>{
+        res.status(500).send({
+            message: error.message
+        })
+    })
+}
