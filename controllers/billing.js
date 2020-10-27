@@ -64,3 +64,43 @@ exports.update = (req, res) => {
         })
     })
 }
+exports.getAll = (req, res) => {
+
+    BillingModel.find()
+        .then((billing) => {
+            res.send(billing)
+        }).catch((error) => {
+            return res.status(500).send({
+                message: error.message
+            })
+
+        })
+
+}
+ 
+
+exports.getOne=(req,res)=>{
+    BillingModel.findById(req.params.id)
+    .populate('user')
+    .populate('payment')
+    .populate('ataraxia')
+    .then((billing) => {
+        res.send(billing)
+    })
+    .catch((error) => {
+        res.status(500).send({
+            message: error.message
+        })
+    })
+}
+exports.deleteOne=(req,res)=>{
+    BillingModel.findById(req.params.id)
+    .then((billing) => {
+        res.send(billing)
+    })
+    .catch((error) => {
+        res.status(500).send({
+            message: error.message
+        })
+    })
+}
