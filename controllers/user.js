@@ -1,5 +1,6 @@
 const user = require('../models/user')
 const UserModel = require('../models/user')
+const service = require('../services/index')
 exports.create = (req, res) => {
 
     if (Object.entries(req.body).length==0) {
@@ -97,3 +98,24 @@ exports.deleteOne = (req, res) => {
         }
     ) 
     }
+
+    exports.login = (req,res) =>{
+        UserModel.findOne({email:req.body.email}, (error,dataUser) =>{
+            if(dataUser != null){
+                if(dataUser.password == req.body.password){
+                    res.send({ token: service.createToken (dataUser)})
+                }else{
+                    res.status(400).send({
+                        message:'Los Datos No Coinciden'
+                    })
+                }
+    
+            }else{
+                res.status(400).send({
+                    message: 'Los datos No Coinciden'
+                }
+                )}
+            }
+            )}
+
+    
