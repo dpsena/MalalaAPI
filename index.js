@@ -2,6 +2,8 @@ const express= require('express')
 const cors= require('cors')
 const bodyParser= require('body-parser')
 const {conectBD} =require('./db')
+const port = process.env.PORT ||3001
+
 const app=express()
 app.use(cors())
 app.use(bodyParser.json())
@@ -18,6 +20,6 @@ require('./routers/billing')(app)
 
 
 
-app.listen(3001,()=>{
+app.listen(port,()=>{
     console.log('servidor ATARAXIA')
 })
