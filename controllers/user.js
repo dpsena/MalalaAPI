@@ -54,7 +54,12 @@ exports.update=(req,res)=>{
 
 
 exports.getAll = (req , res) => {
-    UserModel.find()
+    let searchBy = {}
+    if (req.query.searchBy != undefined && req.query.searchBy != null) {
+        const role = new RegExp(`.*${req.query.searchBy}.*`, 'i')
+        searchBy = { role: role }
+    }
+    UserModel.find(searchBy)
     .then((user) => {res.send(user)})
     .catch(
         (error) => {
