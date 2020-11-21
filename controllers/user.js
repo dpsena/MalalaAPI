@@ -1,4 +1,3 @@
-const user = require('../models/user')
 const UserModel = require('../models/user')
 const service = require('../services/index')
 exports.create = (req, res) => {

@@ -7,6 +7,4 @@ module.exports=(app)=>{
     app.get('/user/get/:id',user.getOne)
     app.delete('/user/deleteOne/:id',user.deleteOne)
     app.post('/login',user.login)
-
-
 }
