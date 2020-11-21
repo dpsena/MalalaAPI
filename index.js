@@ -16,7 +16,8 @@ require('./routers/payment')(app)
 require('./routers/ataraxia')(app)
 require('./routers/billing')(app)
 require('./routers/observation')(app)
-
+require('./routers/recommendation')(app)
+require('./routers/pathology')(app)
 
 
 

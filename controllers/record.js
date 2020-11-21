@@ -1,4 +1,3 @@
-const record = require('../models/record')
 const RecordModel = require('../models/record')
 
             /**MÉTODO PARA AGREGAR UN HISTORIAL */
