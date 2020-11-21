@@ -1,16 +1,18 @@
-const ObservationModel = require('../models/observations')
+const RecommendationModel = require('../models/recommendation')
+
+
+
 exports.create = (req, res) => {
     console.log(req.body)
-    const observation = new ObservationModel({
+    const recommendation = new RecommendationModel({
         
-        numberDay: req.body.numberDay,
-        observation: req.body.observation,
+        recommendation: req.body.recommendation,
         date: req.body.date,
         user: req.body.user
     })
 
-    observation.save()
-        .then((observationPatient) => { res.send(observationPatient) })
+    recommendation.save()
+        .then((recommendationPatient) => { res.send(recommendationPatient) })
         .catch((error) => {
             res.status(500).send({
                 message: error.message
