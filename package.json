@@ -19,7 +19,7 @@
     "moment": "^2.29.1",
     "mongoose": "^5.10.9"
   },
-    "devDependencies": {
-      "nodemon": "^2.0.6"
-    }
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
 }
