@@ -40,5 +40,5 @@ exports.decodeToken = (token) => {
             })
         }        
     })
-    return decode;
+    return decode
 }

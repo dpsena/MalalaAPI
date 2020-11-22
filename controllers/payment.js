@@ -12,10 +12,11 @@ exports.create = (req, res) =>{
 
     const payment = new PaymentModel({
         date: req.body.date,
-        serviceName: req.body.serviceName,
+        email:req.body.email,
         status: req.body.status,
         paymentMethod: req.body.paymentMethod,
         totalPayment: req.body.totalPayment,
+        numberCard:req.body.numberCard,
         user: req.body.user
     })
 
@@ -38,10 +39,11 @@ exports.update = (req, res) =>{
 
     const payment =({
         date: req.body.date,
-        serviceName: req.body.serviceName,
+        email:req.body.email,
         status: req.body.status,
         paymentMethod: req.body.paymentMethod,
         totalPayment: req.body.totalPayment,
+        numberCard:req.body.numberCard,
         user: req.body.user
     })
 
