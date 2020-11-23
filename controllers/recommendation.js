@@ -20,6 +20,7 @@ exports.create = (req, res) => {
 
         })
 }
+
 exports.update = (req, res) => {
 
     if (Object.entries(req.body).length == 0) {
@@ -48,9 +49,9 @@ exports.getAll = (req, res) => {
             res.send(recommendationPatient)
         }).catch((error) => {
             return res.status(500).send({
+
                 message: error.message
             })
 
         })
 
-}

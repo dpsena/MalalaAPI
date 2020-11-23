@@ -3,11 +3,14 @@ const PathologyModel = require('../models/pathology')
 exports.create = (req, res) => {
 console.log(req.body)
     const pathology = new PathologyModel({
+
         
         name: req.body.name,
         characteristics: req.body.characteristics
     })
+
     pathology.save()
+
         .then((dataPathology) => {
             res.send(dataPathology)
         })
@@ -16,6 +19,7 @@ console.log(req.body)
                 message: error.message
             })
         })
+
 
 
 }
@@ -35,11 +39,13 @@ exports.update = (req, res) => {
     .then((dataPathology) => {
         res.send(dataPathology)
     }).cach((error) => {
+
         res.status(500).send({
             message: error.message
         })
     })
 }
+
 exports.getAll = (req, res) => {
 
     PathologyModel.find()
@@ -53,3 +59,4 @@ exports.getAll = (req, res) => {
         })
 
 }
+

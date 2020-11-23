@@ -4,7 +4,6 @@ const config = require ('./config')
     const conectBD = () => {
 
         mongoose.connect(config.mongoDB, {
-
                 useNewUrlParser: true,
                 useUnifiedTopology: true
             },(error) => {
@@ -23,5 +22,4 @@ const config = require ('./config')
 /*    
 'mongodb+srv://Ataraxia:ataraxia@ataraxia.usy4w.mongodb.net/Ataraxia?retryWrites=true&w=majority'
 config.mongoDB
-
 */

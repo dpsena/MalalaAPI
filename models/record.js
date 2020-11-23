@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const recordSchema = new mongoose.Schema ({
-
     dateAndHour:{type:Date,required:true},
     pathology:{type: mongoose.Schema.Types.ObjectId, ref: 'Pathology'},
     observations:{type: mongoose.Schema.Types.ObjectId, ref: 'Observation'},
