@@ -1,24 +1,15 @@
-const UserModel = require('../models/user')
-const service = require('../services/index')
-exports.create = (req, res) => {
+const PathologyModel = require('../models/pathology')
 
-    if (Object.entries(req.body).length==0) {
-        return res.status(400).send({
-            message: 'los datos  del usuario son obligatorios.'
-        })
-    }
-    const user = new UserModel({
+exports.create = (req, res) => {
+console.log(req.body)
+    const user = new PathologyModel({
+        
         name: req.body.name,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password,
-        role: req.body.role,
-        identificationNumber: req.body.identificationNumber,
-       
+        characteristics: req.body.characteristics
     })
     user.save()
-        .then((dataUser) => {
-            res.send(dataUser)
+        .then((dataPathology) => {
+            res.send(dataPathology)
         })
         .catch((error) => {
             res.status(500).send({
@@ -26,7 +17,7 @@ exports.create = (req, res) => {
             })
         })
 }
-
+/* 
 exports.update=(req,res)=>{
     if (Object.entries(req.body).length==0) {
         return res.status(400).send({
@@ -53,12 +44,7 @@ exports.update=(req,res)=>{
 
 
 exports.getAll = (req , res) => {
-    let searchBy = {}
-    if (req.query.searchBy != undefined && req.query.searchBy != null) {
-        const role = new RegExp(`.*${req.query.searchBy}.*`, 'i')
-        searchBy = { role: role }
-    }
-    UserModel.find(searchBy)
+    UserModel.find()
     .then((user) => {res.send(user)})
     .catch(
         (error) => {
@@ -73,7 +59,7 @@ exports.getAll = (req , res) => {
 /**Metodo para obtener un user por el id
  * @param {*} req => Todo lo que se recibe
  * @param {*} res => La respuesta que se devolverá
-*/
+*//*
 
 exports.getOne = (req , res) => {
    UserModel.findById(req.params.id)
@@ -90,7 +76,7 @@ exports.getOne = (req , res) => {
 /**Metodo para eliminar un usuario por el id
  * @param {*} req => Todo lo que se recibe
  * @param {*} res => La respuesta que se devolverá
-*/
+*//*
 exports.deleteOne = (req, res) => {
     UserModel.findByIdAndRemove(req.params.id)
     .then((user) => { res.send(user) } )
@@ -122,4 +108,4 @@ exports.deleteOne = (req, res) => {
             }
             )}
 
-    
+     */

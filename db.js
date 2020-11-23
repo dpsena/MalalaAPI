@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
+const config = require ('./config')
+
     const conectBD = () => {
-        mongoose.connect('mongodb+srv://Ataraxia:ataraxia@ataraxia.usy4w.mongodb.net/Ataraxia?retryWrites=true&w=majority', {
+        mongoose.connect( 'mongodb+srv://Ataraxia:ataraxia@ataraxia.usy4w.mongodb.net/Ataraxia?retryWrites=true&w=majority', {
                 useNewUrlParser: true,
                 useUnifiedTopology: true
             },(error) => {
@@ -16,3 +18,6 @@ const mongoose = require('mongoose')
         )
     }
     module.exports={conectBD}
+/*    
+'mongodb+srv://Ataraxia:ataraxia@ataraxia.usy4w.mongodb.net/Ataraxia?retryWrites=true&w=majority'
+*/
