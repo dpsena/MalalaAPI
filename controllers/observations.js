@@ -18,18 +18,3 @@ exports.create = (req, res) => {
 
         })
 }
-/* exports.update = (req, res) => {
-
-    const observation = new ObservationModel({
-        observation: req.body.observation,
-    })
-
-    observation.save()
-        .then((observationPatient) => { res.send(observationPatient) })
-        .catch((error) => {
-            res.status(500).send({
-                message: error.message
-            })
-
-        })
-} */

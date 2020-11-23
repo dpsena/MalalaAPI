@@ -56,7 +56,7 @@ exports.update = (req, res) => {
         })
 }
 
-            /**MÉTODO PARA LISTAR TODOS LOS HISTORIALES */
+            
 
 exports.getAll = (req, res) => {
     RecordModel.find()
@@ -72,7 +72,7 @@ exports.getAll = (req, res) => {
     })
 }
 
-            /**MÉTODO PARA LISTAR TODOS LOS HISTORIALES */
+
 
 exports.getOne = (req, res) => {
     RecordModel.findById(req.params.id)
