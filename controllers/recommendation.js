@@ -20,18 +20,38 @@ exports.create = (req, res) => {
 
         })
 }
-/* exports.update = (req, res) => {
 
-    const observation = new ObservationModel({
-        observation: req.body.observation,
+exports.update = (req, res) => {
+
+    if (Object.entries(req.body).length == 0) {
+        return res.status(400).send({
+            message: 'los datos  del usuario son obligatorios.'
+        })
+    }
+    const recommendation = {
+        characteristics: req.body.characteristics
+    }
+    
+    PathologyModel.findByIdandUpdate(req.params.id,recommendation,{new:true})
+    
+    .then((dataRecommendation) => {
+        res.send(dataRecommendation)
+    }).cach((error) => {
+        res.status(500).send({
+            message: error.message
+        })
     })
+}
+exports.getAll = (req, res) => {
 
-    observation.save()
-        .then((observationPatient) => { res.send(observationPatient) })
-        .catch((error) => {
-            res.status(500).send({
+    PathologyModel.find()
+        .then((recommendationPatient) => {
+            res.send(recommendationPatient)
+        }).catch((error) => {
+            return res.status(500).send({
+
                 message: error.message
             })
 
         })
-} */
+
