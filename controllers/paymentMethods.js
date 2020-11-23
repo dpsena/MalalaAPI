@@ -1,5 +1,5 @@
-const payment = require('../models/payment');
-const PaymentModel = require('../models/payment');
+const paymentMethods = require('../models/paymentMethods');
+const  PaymentMethodModel = require('../models/payment');
 
 
 exports.create = (req, res) =>{
@@ -10,17 +10,12 @@ exports.create = (req, res) =>{
         })
     }
 
-    const payment = new PaymentModel({
-        date: req.body.date,
-        email:req.body.email,
-        status: req.body.status,
+    const paymentMethods = new PaymentMethodModel({
         paymentMethod: req.body.paymentMethod,
-        totalPayment: req.body.totalPayment,
-        numberCard:req.body.numberCard,
-        user: req.body.user
+        
     })
 
-    payment.save()
+    paymentMethods.save()
     .then((dataPayment) =>{
         res.send(dataPayment)
     }).catch((error) =>{
@@ -37,17 +32,11 @@ exports.update = (req, res) =>{
         })
     }
 
-    const payment =({
-        date: req.body.date,
-        email:req.body.email,
-        status: req.body.status,
-        paymentMethod: req.body.paymentMethod,
-        totalPayment: req.body.totalPayment,
-        numberCard:req.body.numberCard,
-        user: req.body.user
+    const paymentMethods =({
+        paymentMethod: req.body. paymentMethod,
     })
 
-    PaymentModel.findByIdAndUpdate(req.params.id , payment, {new: true})
+    PaymentMethodModel.findByIdAndUpdate(req.params.id , paymentMethods, {new: true})
     .then((paymentUpdate) =>{
         res.send(paymentUpdate)
     })
@@ -60,11 +49,11 @@ exports.update = (req, res) =>{
 }
 
 exports.getAll = (req, res) =>{
-    PaymentModel.find()
+    PaymentMethodModel.find()
         .populate('user')
         .exec()
-        .then((payments) =>{
-            res.send(payments)
+        .then((paymentMethods) =>{
+            res.send(paymentMethods)
         })
         .catch((error) =>{
             res.status(500).send({
@@ -74,11 +63,11 @@ exports.getAll = (req, res) =>{
 }
 
 exports.getOne = (req, res) =>{
-    PaymentModel.findById(req.params.id)
+    PaymentMethodModel.findById(req.params.id)
     .populate('user')
     .exec()
-    .then((payment) =>{
-        res.send(payment)
+    .then((paymentMethods) =>{
+        res.send(paymentMethods)
     })
     .catch((error) =>{
         res.status(500).send({
@@ -88,9 +77,9 @@ exports.getOne = (req, res) =>{
 }
 
 exports.deleteOne = (req, res) =>{
-    PaymentModel.findByIdAndRemove(req.params.id)
-    .then((payment) =>{
-        res.send(payment)
+    PaymentMethodModel.findByIdAndRemove(req.params.id)
+    .then((paymentMethods) =>{
+        res.send(paymentMethods)
     })
     .catch((error) =>{
         res.status(500).send({
