@@ -4,4 +4,6 @@ module.exports =(app)=>{
     app.post('/pathology/create',pathology.create)
     app.put('/pathology/update/:id' ,isAuth.auth ,pathology.update)
     app.get('/pathology/getAll',pathology.getAll)
+
 }
+

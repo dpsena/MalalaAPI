@@ -15,7 +15,6 @@ exports.create = (req, res) => {
     const appointment = new appointmentModel({
         date: req.body.date,
         description: req.body.description,
-        status: req.body.status,
         user: req.body.user
         
        
@@ -46,7 +45,6 @@ exports.update = (req,res) =>{
     const appointment = {
         date: req.body.date,
         description: req.body.description,
-        status: req.body.status,
         user: req.body.user
     }
 
