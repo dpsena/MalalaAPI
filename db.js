@@ -3,7 +3,7 @@ const config = require ('./config')
 
     const conectBD = () => {
 
-        mongoose.connect( config.mongoDB,{
+        mongoose.connect( 'mongodb+srv://Ataraxia:ataraxia@ataraxia.usy4w.mongodb.net/Ataraxia?retryWrites=true&w=majority',{
                 useNewUrlParser: true,
                 useUnifiedTopology: true
             },(error) => {
