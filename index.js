@@ -18,6 +18,7 @@ require('./routers/billing')(app)
 require('./routers/observation')(app)
 require('./routers/recommendation')(app)
 require('./routers/pathology')(app)
+require('./routers/paymentMethods')(app)
 
 
 
