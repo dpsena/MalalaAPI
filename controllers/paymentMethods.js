@@ -1,5 +1,5 @@
-const paymentMethods = require('../models/paymentMethods');
-const  PaymentMethodModel = require('../models/payment');
+
+const  PaymentMethodModel = require('../models/paymentMethods');
 
 
 exports.create = (req, res) =>{
