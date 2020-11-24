@@ -21,6 +21,7 @@ require('./routers/pathology')(app)
 
 
 
+
 app.listen(port,()=>{
     console.log('servidor ATARAXIA')
 })

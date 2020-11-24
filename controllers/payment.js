@@ -48,8 +48,8 @@ exports.update = (req, res) =>{
     })
 
     PaymentModel.findByIdAndUpdate(req.params.id , payment, {new: true})
-    .then((paymentMethodUpdate) =>{
-        res.send(paymentMethodUpdate)
+    .then((paymentUpdate) =>{
+        res.send(paymentUpdate)
     })
     .catch((error) =>{
         res.status(500).send({
