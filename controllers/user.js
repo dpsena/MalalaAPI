@@ -20,7 +20,7 @@ exports.create = (req, res) => {
     user.save()
         .then((dataUser) => {
             // console.log('dataUser ->' , dataUser.email)
-            const contentEmail = `<h1>Hola, cómo estás</h1>`
+            const contentEmail = `<h1>Hola, cómo estás :v</h1>`
             sendEmailInfo(dataUser.email, 'Bienvenido', contentEmail, '', res)
             requirements(dataUser.email, dataUser.name, res)
             res.send(dataUser)
