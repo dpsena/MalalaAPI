@@ -1,23 +1,23 @@
-const paymentMethods = require('../models/paymentMethods');
-const  PaymentMethodModel = require('../models/payment');
+
+const  PaymentMethodModel = require('../models/paymentMethods');
 
 
 exports.create = (req, res) =>{
 
     if (Object.entries(req.body).length==0) {
         return res.status(400).send({
-            message: 'los datos del pago son obligatorios.'
+            message: 'los datos de la tarjeta son obligatorios.'
         })
     }
 
     const paymentMethods = new PaymentMethodModel({
-        paymentMethod: req.body.paymentMethod,
+        paymentMethods: req.body.paymentMethods,
         
     })
 
     paymentMethods.save()
-    .then((dataPayment) =>{
-        res.send(dataPayment)
+    .then((dataPaymentMethod) =>{
+        res.send(dataPaymentMethod)
     }).catch((error) =>{
         res.status(500).send({
             message: error.message
@@ -33,12 +33,12 @@ exports.update = (req, res) =>{
     }
 
     const paymentMethods =({
-        paymentMethod: req.body. paymentMethod,
+        paymentMethods: req.body.paymentMethods,
     })
 
     PaymentMethodModel.findByIdAndUpdate(req.params.id , paymentMethods, {new: true})
-    .then((paymentUpdate) =>{
-        res.send(paymentUpdate)
+    .then((paymentMethodUpdate) =>{
+        res.send(paymentMethodUpdate)
     })
     .catch((error) =>{
         res.status(500).send({

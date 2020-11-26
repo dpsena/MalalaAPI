@@ -3,7 +3,6 @@ const cors= require('cors')
 const bodyParser= require('body-parser')
 const {conectBD} =require('./db')
 const port = process.env.PORT ||3001
-
 const app=express()
 app.use(cors())
 app.use(bodyParser.json())
@@ -18,6 +17,8 @@ require('./routers/billing')(app)
 require('./routers/observation')(app)
 require('./routers/recommendation')(app)
 require('./routers/pathology')(app)
+require('./routers/paymentMethods')(app)
+
 
 
 
