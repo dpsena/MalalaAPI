@@ -6,7 +6,6 @@ const port = process.env.PORT ||3001
 const app=express()
 app.use(cors())
 app.use(bodyParser.json())
-
 conectBD()
 
 require('./routers/user')(app)

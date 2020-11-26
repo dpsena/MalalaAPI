@@ -54,4 +54,8 @@ exports.getAll = (req, res) => {
             })
 
         })
+<<<<<<< HEAD
+    }
+=======
  }
+>>>>>>> 82a366eeb5a79536cdba39938e72b62cacb3d2b9

@@ -12,9 +12,7 @@ const config = require ('./config')
                     console.log('Error :', error)
                 } else {
                     console.log('se conecto a la Base de Datos')
-
                 }
-
             }
         )
     }
