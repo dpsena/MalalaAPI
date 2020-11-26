@@ -20,6 +20,9 @@ require('./routers/recommendation')(app)
 require('./routers/pathology')(app)
 require('./routers/paymentMethods')(app)
 
+
+
+
 app.listen(port,()=>{
     console.log('servidor ATARAXIA')
 })

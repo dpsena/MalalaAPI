@@ -11,7 +11,7 @@ exports.create = (req, res) =>{
     }
 
     const paymentMethods = new PaymentMethodModel({
-        paymentMethods: req.body.paymentMethod,
+        paymentMethods: req.body.paymentMethods,
         
     })
 
@@ -33,12 +33,12 @@ exports.update = (req, res) =>{
     }
 
     const paymentMethods =({
-        paymentMethods: req.body. paymentMethod,
+        paymentMethods: req.body.paymentMethods,
     })
 
     PaymentMethodModel.findByIdAndUpdate(req.params.id , paymentMethods, {new: true})
-    .then((paymentUpdate) =>{
-        res.send(paymentUpdate)
+    .then((paymentMethodUpdate) =>{
+        res.send(paymentMethodUpdate)
     })
     .catch((error) =>{
         res.status(500).send({

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const paymentMethodSchema = new mongoose.Schema({
+    
     paymentMethods: {type: String},
    
 })

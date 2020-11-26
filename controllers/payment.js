@@ -14,7 +14,7 @@ exports.create = (req, res) =>{
         date: req.body.date,
         email:req.body.email,
         status: req.body.status,
-        paymentMethod: req.body.paymentMethod,
+        paymentMethods: req.body.paymentMethods,
         totalPayment: req.body.totalPayment,
         numberCard:req.body.numberCard,
         user: req.body.user
@@ -41,15 +41,15 @@ exports.update = (req, res) =>{
         date: req.body.date,
         email:req.body.email,
         status: req.body.status,
-        paymentMethod: req.body.paymentMethod,
+        paymentMethods: req.body.paymentMethods,
         totalPayment: req.body.totalPayment,
         numberCard:req.body.numberCard,
         user: req.body.user
     })
 
     PaymentModel.findByIdAndUpdate(req.params.id , payment, {new: true})
-    .then((paymentMethodUpdate) =>{
-        res.send(paymentMethodUpdate)
+    .then((paymentUpdate) =>{
+        res.send(paymentUpdate)
     })
     .catch((error) =>{
         res.status(500).send({
