@@ -22,6 +22,7 @@ require('./routers/paymentMethods')(app)
 
 
 
+
 app.listen(port,()=>{
     console.log('servidor ATARAXIA')
 })
