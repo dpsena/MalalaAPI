@@ -1,6 +1,5 @@
 const mongoose= require ('mongoose')
 const observationSchema= new mongoose.Schema({
-
     numberDay:{type:Number,required:true},
     observation:{type:String, required:true},
     date:{ type:Date,required:true},

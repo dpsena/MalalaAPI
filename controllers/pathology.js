@@ -1,30 +1,22 @@
 const PathologyModel = require('../models/pathology')
-
-exports.create = (req, res) => {
-console.log(req.body)
+exports.create = async(req, res) => {
+    try {
+        console.log(req.body)
     const pathology = new PathologyModel({
-
-        
+  
         name: req.body.name,
         characteristics: req.body.characteristics
     })
-
-    pathology.save()
-
-        .then((dataPathology) => {
-            res.send(dataPathology)
+const dataPathology= await pathology.save()
+res.send(dataPathology)
+    } catch (error) {
+        res.status(500).send({
+            message: error.message
         })
-        .catch((error) => {
-            res.status(500).send({
-                message: error.message
-            })
-        })
-
-
-
+    }
 }
-exports.update = (req, res) => {
-
+exports.update = async(req, res) => {
+try {
     if (Object.entries(req.body).length == 0) {
         return res.status(400).send({
             message: 'los datos  del usuario son obligatorios.'
@@ -34,29 +26,25 @@ exports.update = (req, res) => {
         characteristics: req.body.characteristics
     }
     
-    PathologyModel.findByIdandUpdate(req.params.id,pathology,{new:true})
-    
-    .then((dataPathology) => {
-        res.send(dataPathology)
-    }).cach((error) => {
-
-        res.status(500).send({
-            message: error.message
-        })
+    const dataPathology=await PathologyModel.findByIdandUpdate(req.params.id,pathology,{new:true})
+    res.send(dataPathology)
+} catch (error) {
+    res.status(500).send({
+        message: error.message
     })
 }
+}
 
-exports.getAll = (req, res) => {
+exports.getAll = async(req, res) => {
 
-    PathologyModel.find()
-        .then((pathology) => {
-            res.send(pathology)
-        }).catch((error) => {
-            return res.status(500).send({
-                message: error.message
-            })
+    try {
+        const pathology= await PathologyModel.find()
+        res.send(pathology)
+    } catch (error) {
 
+        return res.status(500).send({
+            message: error.message
         })
-
+    }
 }
 

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
 const recordSchema = new mongoose.Schema ({
     dateAndHour:{type:Date,required:true},
     pathology:{type: mongoose.Schema.Types.ObjectId, ref: 'Pathology'},
@@ -8,5 +7,4 @@ const recordSchema = new mongoose.Schema ({
     printer:{ type:Boolean},
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
-
 module.exports=mongoose.model('Record',recordSchema)

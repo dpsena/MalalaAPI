@@ -1,4 +1,3 @@
-
 module.exports = (app) =>{
     const paymentMethods = require('../controllers/paymentMethods');
     app.post('/paymentMethods/create', paymentMethods.create);

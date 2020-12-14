@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const AtaraxiaSchema = new mongoose.Schema({
     nit: {type: Number, required: true, unique:true },
     tradeName: {type: String, required: true},
@@ -7,5 +6,4 @@ const AtaraxiaSchema = new mongoose.Schema({
     telephone: {type: Number, required: true },
     email:{type:String, required:true,unique:true },
 })
-
 module.exports=mongoose.model('Ataraxia',AtaraxiaSchema);

@@ -1,89 +1,77 @@
-const paymentMethods = require('../models/paymentMethods');
 const  PaymentMethodModel = require('../models/payment');
-
-
-exports.create = (req, res) =>{
-
+exports.create = async(req, res) =>{
+try {
     if (Object.entries(req.body).length==0) {
+
         return res.status(400).send({
             message: 'los datos del pago son obligatorios.'
         })
     }
-
     const paymentMethods = new PaymentMethodModel({
         paymentMethod: req.body.paymentMethod,
         
     })
-
-    paymentMethods.save()
-    .then((dataPayment) =>{
-        res.send(dataPayment)
-    }).catch((error) =>{
-        res.status(500).send({
-            message: error.message
-        })
-    })
+    const dataPayment= await paymentMethods.save()
+    res.send(dataPayment)
+} catch (error) {
+    res.status(500).send({
+        message: error.message
+    }) 
+}
 }
 
-exports.update = (req, res) =>{
-    if (Object.entries(req.body).length==0) {
-        return res.status(400).send({
-            message: 'los datos a actualizar deben estar llenos.'
-        })
+exports.update = async(req, res) =>{
+    try {
+        if (Object.entries(req.body).length==0) {
+            return res.status(400).send({
+                message: 'los datos a actualizar deben estar llenos.'
+            })
+        }
+        const paymentMethods =({
+            paymentMethod: req.body. paymentMethod,
+        }) 
+       const paymentUpdate = PaymentMethodModel.findByIdAndUpdate(req.params.id , paymentMethods, {new: true})
+       res.send(paymentUpdate)
+    } catch (error) {
+        res.status(500).send({
+            message: error.message
+        }) 
     }
-
-    const paymentMethods =({
-        paymentMethod: req.body. paymentMethod,
-    })
-
-    PaymentMethodModel.findByIdAndUpdate(req.params.id , paymentMethods, {new: true})
-    .then((paymentUpdate) =>{
-        res.send(paymentUpdate)
-    })
-    .catch((error) =>{
-        res.status(500).send({
-            message: error.message
-        })
-    })
-
 }
 
-exports.getAll = (req, res) =>{
-    PaymentMethodModel.find()
+exports.getAll = async(req, res) =>{
+    try {
+        const paymentMethods= await PaymentMethodModel.find()
         .populate('user')
         .exec()
-        .then((paymentMethods) =>{
-            res.send(paymentMethods)
+        res.send(paymentMethods)
+    } catch (error) {
+        res.status(500).send({
+            message: error.message
         })
-        .catch((error) =>{
-            res.status(500).send({
-                message: error.message
-            })
-        })
-}
+    }
+  }
 
-exports.getOne = (req, res) =>{
-    PaymentMethodModel.findById(req.params.id)
-    .populate('user')
+exports.getOne = async(req, res) =>{
+    try {
+        const paymentMethods= await PaymentMethodModel.findById(req.params.id)
+        .populate('user')
     .exec()
-    .then((paymentMethods) =>{
-        res.send(paymentMethods)
-    })
-    .catch((error) =>{
+     res.send(paymentMethods)
+    } catch (error) {
         res.status(500).send({
             message: error.message
         })
-    })
+    }
 }
 
-exports.deleteOne = (req, res) =>{
-    PaymentMethodModel.findByIdAndRemove(req.params.id)
-    .then((paymentMethods) =>{
+exports.deleteOne = async(req, res) =>{
+    try {
+        const paymentMethods= await PaymentMethodModel.findByIdAndRemove(req.params.id)
         res.send(paymentMethods)
-    })
-    .catch((error) =>{
+    } catch (error) {
         res.status(500).send({
             message: error.message
         })
-    })
+    }
 }
